@@ -1,38 +1,50 @@
-class Deposit(override val amount: Double) : Transaction {
-    override fun execute(account: BankAccount) {
+class Deposit(override val amount: Double) : Transaction
+{
+    override fun execute(account: BankAccount)
+    {
+
         account.balance += amount
     }
 
     override fun printTransactionInfo() {
-        println("Deposit transaction: +$amount")
+        println("Транзакция: +$amount")
     }
 }
 
 class Withdrawal(override val amount: Double) : Transaction {
-    override fun execute(account: BankAccount) {
-        if (account.balance >= amount) {
+    override fun execute(account: BankAccount)
+    {
+        if (account.balance >= amount)
+        {
             account.balance -= amount
-        } else {
-            println("Insufficient funds on the account")
+
+        }
+        else {
+            println("error")
         }
     }
 
     override fun printTransactionInfo() {
-        println("Withdrawal transaction: -$amount")
+        println("Выведено средств: $amount")
     }
 }
 
-class Transfer(override val amount: Double, val targetAccount: BankAccount) : Transaction {
-    override fun execute(account: BankAccount) {
-        if (account.balance >= amount) {
+class Transfer(override val amount: Double, val targetAccount: BankAccount) : Transaction
+{
+    override fun execute(account: BankAccount)
+    {
+        if (account.balance >= amount)
+        {
             account.balance -= amount
             targetAccount.balance += amount
-        } else {
-            println("Insufficient funds on the account")
+        }
+        else {
+            println("error")
         }
     }
 
-    override fun printTransactionInfo() {
-        println("Transfer transaction: -$amount to ${targetAccount.accountNumber}")
+    override fun printTransactionInfo()
+    {
+        println("Перевод на сумму: $amount на ${targetAccount.accountNumber}")
     }
 }

@@ -1,3 +1,4 @@
+
 interface Transaction {
     val amount: Double
 

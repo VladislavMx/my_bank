@@ -9,11 +9,11 @@ abstract class BankAccount(
 
     fun printAccountInfo()
     {
-        println("Account number: $accountNumber")
-        println("Owner: $ownerName")
-        println("Current balance: $balance")
-        transactions.forEach { it.printTransactionInfo() }
-    }
+        println("Номер карты: $accountNumber")
+        println("Пользователь: $ownerName")
+        println("Баланс: $balance")
+
+        transactions.forEach { it.printTransactionInfo() } }
 
 }
 class SavingsAccount(accountNumber: String, ownerName: String) :
@@ -24,7 +24,8 @@ class SavingsAccount(accountNumber: String, ownerName: String) :
     {
         if (transaction is Withdrawal && balance - transaction.amount < 0)
         {
-            println("Withdrawal transaction cancelled. Insufficient funds on the account.")
+
+            println("Отмена, недостаточно средств")
         }
         else
         {
